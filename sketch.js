@@ -49,7 +49,7 @@ function loadLevel(level) {
     } else {
       if(validChars.includes(cell)) {
         theLevel[y].push(cell)
-        if(cell == player) {
+        if(cell == player || cell == playerInGoal) {
           playerPos = createVector(x, y)
         }
       } else {
