@@ -17,7 +17,7 @@ const playerInGoal = "+"
 const empty = " "
 const validChars = [wall, player, box, goal, boxInGoal, playerInGoal, empty]
 
-const cellSize = 64
+let cellSize = 64
 let origin
 let dimx, dimy
 
@@ -73,6 +73,12 @@ function loadLevel(level) {
   origin = createVector(-width/2, -height/2)
 }
 
+function onLoadLevel() {
+  levelString = document.getElementsByName("level")[0].value
+  cellSize = document.getElementsByName("cellsize")[0].value
+  loadLevel(levelString)
+}
+
 function setup() {
   createCanvas(400, 400, WEBGL);
   loadLevel(levelString)
@@ -83,6 +89,9 @@ function setup() {
   floorImg = loadImage("img/floor.webp")
   goalImg = loadImage("img/goal.png")
   wallImg = loadImage("img/wall.jpg")
+
+  document.getElementsByName("level")[0].value = levelString
+  document.getElementsByName("cellsize")[0].value = cellSize
 
   noStroke()
 }
